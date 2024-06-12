@@ -1,0 +1,52 @@
+exp_name: "'@{dataset.name}'_'@{network.name}'_'@{trainer.name}'_e'@{optimizer.num_epochs}'_lr'@{optimizer.lr}'_'@{mark}'"
+output_dir: ./results/
+save_output: True
+merge_option: default
+mark: default
+seed: 0
+
+num_gpus: 1
+num_workers: 4
+num_machines: 1
+machine_rank: 0
+
+preprocessor:
+  name: base
+
+network:
+  pretrained: False
+
+pipeline:
+  name: train
+
+trainer:
+  name: deed
+  amp_dtype: none
+  same_batch: False
+  diversity_loss_first_epochs: 0
+  diversity_loss_last_epochs: 0
+  diversity_loss_period: 1
+  gradient_accumulation: 1
+
+evaluator:
+  name: base
+
+optimizer:
+  name: sgd
+  num_epochs: 100
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0005
+
+recorder:
+  name: wandb
+  project: default
+  experiment: default
+  group: ""
+  save_all_models: False
+  save_scores: True
+  save_csv: True
+
+loss:
+  eta: 1.0
+  mode: sum

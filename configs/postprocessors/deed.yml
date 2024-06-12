@@ -1,0 +1,11 @@
+postprocessor:
+  name: deed
+  APS_mode: false
+  postprocessor_args:
+    network_name: lenet
+    checkpoint_root: ./results/lenet_ensemble_pretrained
+    num_networks: 5
+    aggregation: average
+    react_percentile: 0
+    react_per_model: True
+    ash_percentile: 0

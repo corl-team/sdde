@@ -1,0 +1,61 @@
+exp_name: "'@{dataset.name}'_'@{network.name}'_'@{trainer.name}'_e'@{optimizer.num_epochs}'_lr'@{optimizer.lr}'_'@{mark}'"
+output_dir: ./results/
+save_output: True
+merge_option: default
+mark: default
+
+num_gpus: 1
+num_workers: 4
+num_machines: 1
+machine_rank: 0
+
+preprocessor:
+  name: base
+
+network:
+  pretrained: False
+
+pipeline:
+  name: hopt
+
+trainer:
+  name: deed
+  amp_dtype: none
+  same_batch: True
+  diversity_loss_first_epochs: 0
+  diversity_loss_last_epochs: 0
+  diversity_loss_period: 1
+
+evaluator:
+  name: base
+
+optimizer:
+  name: sgd
+  num_epochs: 100
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 0.0005
+
+recorder:
+  name: wandb
+  project: default
+  experiment: default
+  group: ""
+  sweep_id: ""
+  save_all_models: False
+  save_scores: True
+  save_csv: True
+
+loss:
+  eta: 0.0
+  ncl: 0.1
+
+num_hopt_trials: 100
+hopt_params:
+  method: grid
+  metric:
+    goal: maximize
+    name: nearood-AUROC
+  parameters:
+    loss.ncl:
+      values: [0.0, 0.01, 0.1, 0.5, 1, 2, 5, 10.0, 100.0]
