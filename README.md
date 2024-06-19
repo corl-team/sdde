@@ -2,7 +2,7 @@
 
 Official implementation of [Diversifying Deep Ensembles: A Saliency Map Approach for Enhanced OOD Detection, Calibration, and Accuracy](https://arxiv.org/abs/2305.11616) paper by Stanislav Dereka, Ivan Karpukhin, Maksim Zhdanov, and Sergey Kolesnikov.
 
-**[2024-06-07]** The paper is accepted to [IEEE ICIP 2024](https://2024.ieeeicip.org/) conference!
+**[2024-06-07]** The paper is accepted to [IEEE ICIP 2024](https://2024.ieeeicip.org/) conference
 
 <p align="center">
     <img src="images/sdde.png" alt="drawing" width="500"/>
